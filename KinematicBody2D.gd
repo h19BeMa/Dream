@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 const GRAVITY = 15
 const JUMP = -250
-const SPEED = 200
 const FLOOR = Vector2(0, -1)
 
+var SPEED = 200
 var on_ground = false
 
 var velocity = Vector2()
@@ -42,11 +42,12 @@ func _process(delta):
 	
 	
 		
-	if Input.is_action_pressed("ui_accept") && entered == true:
-		get_node("../items").interact()
+	if Input.is_action_just_pressed("ui_accept") && entered == true:
+		get_node("../items/item1").interact()
 
 
 func _on_Area2D_body_entered(body):
 	entered = true
-			
-	
+		
+func _on_Area2D_body_exited(body):
+	entered = false

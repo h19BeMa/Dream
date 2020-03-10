@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Area2D",
 "class": "DialogueAction",
 "language": "GDScript",
-"path": "res://items.gd"
+"path": "res://dialogueScript.gd"
 } ]
 _global_script_class_icons={
 "DialogueAction": ""

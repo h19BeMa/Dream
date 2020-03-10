@@ -2,7 +2,7 @@
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://items.gd" type="Script" id=3]
+[ext_resource path="res://dialogueScript.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 534, 29 )
@@ -13,10 +13,10 @@ extents = Vector2( 33, 33 )
 [node name="Main" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 465, 321 )
+position = Vector2( 474, 253 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 515.65, 516.878 )
+position = Vector2( 507.65, 377.878 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -25,28 +25,29 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="items" type="Node2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="items"]
-margin_left = 173.0
-margin_top = 29.0
-margin_right = 833.0
-margin_bottom = 259.0
+margin_left = 157.0
+margin_top = 415.0
+margin_right = 817.0
+margin_bottom = 588.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" type="Area2D" parent="items"]
-position = Vector2( 135, 448 )
+[node name="item1" type="Area2D" parent="items"]
+position = Vector2( 133, 316 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="items/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="items/item1"]
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="items/Area2D"]
+[node name="Sprite" type="Sprite" parent="items/item1"]
 texture = ExtResource( 2 )
-[connection signal="body_entered" from="items/Area2D" to="player" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="items/item1" to="player" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="items/item1" to="player" method="_on_Area2D_body_exited"]
 
 [editable path="player"]
