@@ -1,10 +1,13 @@
 extends Area2D
 class_name DialogueAction
 
+onready var sprite = get_node("Sprite")
 onready var movement = get_node("../../player")
 onready var text_label = get_node("../RichTextLabel")
 
+var dialog_over = false
 var dia_index = 1
+var picked = false
 
 
 export (String, FILE, "*.json") var dialogue_file_path : String
@@ -12,37 +15,48 @@ var dpath = "data/dialogue.json"
 var dialogue : Dictionary
 
 func _ready():
+	sprite.show()
 	text_label.hide()
 	dialogue = load_dialogue(dpath)
+	
+func _process(delta):
+	if picked == true:
+		sprite.hide()
+
+func _input(event):
+	if Input.is_action_just_pressed("ui_accept") && dialog_over == true:
+		picked = true
 
 func interact() -> void:
-	if dialogue.size() > 1:
-		text_label.visible == false
-		movement.SPEED = 0
-		text_label.show()
+	
+	if dialog_over == false:
+		if dialogue.size() > 1:
+			text_label.visible == false
+			movement.SPEED = 0
+			text_label.show()
 		
-		if dia_index != dialogue.size() + 1:	
-			text_label.text = dialogue[str(dia_index)]["text"]
-			dia_index += 1
+			if dia_index != dialogue.size() + 1:
+				text_label.text = dialogue[str(dia_index)]["text"]
+				dia_index += 1
+			else:
+				dia_index = 1
+				text_label.hide()
+				movement.SPEED = 200
+				dialog_over = true
+		
+		elif dialogue.size() == 1: 
+			text_label.visible == false
+			movement.SPEED = 0
+			text_label.show()
+			text_label.text = dialogue["1"]["text"]
+			
 		else:
-			dia_index = 1
 			text_label.hide()
 			movement.SPEED = 200
-			
-		
-	elif dialogue.size() == 1: 
-		text_label.visible == false
-		movement.SPEED = 0
-		text_label.show()
-		text_label.text = dialogue["1"]["text"]
-		
-	else:
-		text_label.hide()
-		movement.SPEED = 200
-	
-	
-	
-	
+			dialog_over = true
+
+
+
 func load_dialogue(file_path) -> Dictionary:
 
 	var file = File.new()
