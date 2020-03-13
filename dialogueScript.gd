@@ -1,13 +1,13 @@
 extends Area2D
 class_name DialogueAction
 
+
 onready var sprite = get_node("Sprite")
 onready var movement = get_node("../../player")
 onready var text_label = get_node("../RichTextLabel")
-
+onready var get_item = get_node("../../item_class")
 var dialog_over = false
 var dia_index = 1
-var picked = false
 
 
 export (String, FILE, "*.json") var dialogue_file_path : String
@@ -20,12 +20,12 @@ func _ready():
 	dialogue = load_dialogue(dpath)
 	
 func _process(delta):
-	if picked == true:
+	if get_item.items["1"]["is_picked"] == true && movement.entered == true:
 		sprite.hide()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept") && dialog_over == true:
-		picked = true
+		get_item.items["1"]["is_picked"] = true
 
 func interact() -> void:
 	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://item_class.gd" type="Script" id=3]
 [ext_resource path="res://dialogueScript.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -11,6 +12,9 @@ extents = Vector2( 534, 29 )
 extents = Vector2( 33, 33 )
 
 [node name="Main" type="Node2D"]
+
+[node name="item_class" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 474, 253 )
@@ -36,7 +40,7 @@ __meta__ = {
 }
 
 [node name="item1" type="Area2D" parent="items"]
-position = Vector2( 133, 316 )
+position = Vector2( 137, 294 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
