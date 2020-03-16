@@ -20,7 +20,7 @@ func _ready():
 	dialogue = load_dialogue(dpath)
 	
 func _process(delta):
-	if get_item.items["1"]["is_picked"] == true && movement.entered == true:
+	if get_item.items["1"]["is_picked"] == true && movement.entered_key == true:
 		sprite.hide()
 
 func _input(event):
