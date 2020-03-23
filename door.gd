@@ -17,7 +17,7 @@ func _ready():
 	text_label.hide()
 	dialogue = load_dialogue(dpath)
 	
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_accept") && dialog_over == true:
 		#öppna nästa scene
 		print("booh")
@@ -33,7 +33,7 @@ func interact():
 			
 			#ifall du har mer än en rad med dialog
 			if dialogue.size() > 1:
-				text_label.visible == false
+				#text_label.visible == false
 				movement.SPEED = 0
 				text_label.show()
 				if dia_index != dialogue.size() + 1:
@@ -47,7 +47,7 @@ func interact():
 					
 			#ifall storleken på dialogen är en rad
 			elif dialogue.size() == 1: 
-				text_label.visible == false
+				#text_label.visible == false
 				movement.SPEED = 0
 				text_label.show()
 				text_label.text = dialogue["1"]["1"]["text"]
@@ -60,7 +60,7 @@ func interact():
 	elif get_item.items["1"]["is_picked"] == false:
 		if dialog_over == false:
 			if dialogue.size() > 1:
-				text_label.visible == false
+				#text_label.visible == false
 				movement.SPEED = 0
 				text_label.show()
 				if dia_index != dialogue.size() + 1:
@@ -74,7 +74,7 @@ func interact():
 					
 			#ifall storleken på dialogen är en rad
 			elif dialogue.size() == 1: 
-				text_label.visible == false
+				#text_label.visible == false
 				movement.SPEED = 0
 				text_label.show()
 				text_label.text = dialogue["2"]["1"]["text"]
@@ -90,6 +90,6 @@ func load_dialogue(file_path) -> Dictionary:
 	assert(file.file_exists(file_path))
 	
 	file.open(file_path, file.READ)
-	var dialogue = parse_json(file.get_as_text())
-	assert(dialogue.size() > 0)
-	return dialogue 
+	var New_dialogue = parse_json(file.get_as_text())
+	assert(New_dialogue.size() > 0)
+	return New_dialogue 
