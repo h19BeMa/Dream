@@ -71,5 +71,6 @@ texture = ExtResource( 4 )
 [connection signal="body_entered" from="items/item1" to="player" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="items/item1" to="player" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="items/door" to="player" method="_on_door_body_entered"]
+[connection signal="body_exited" from="items/door" to="player" method="_on_door_body_exited"]
 
 [editable path="player"]

@@ -35,7 +35,7 @@ func interact():
 				#text_label.visible == false
 				movement.SPEED = 0
 				text_label.show()
-				if dia_index != dialogue.size() + 1:
+				if dia_index != dialogue["1"].size() + 1:
 					text_label.text = dialogue["1"][str(dia_index)]["text"]
 					dia_index += 1
 				else:
@@ -69,7 +69,7 @@ func interact():
 					dia_index = 1
 					text_label.hide()
 					movement.SPEED = 200
-					dialog_over = true
+					
 					
 			#ifall storleken på dialogen är en rad
 			elif dialogue.size() == 1: 
@@ -81,7 +81,7 @@ func interact():
 			else:
 				text_label.hide()
 				movement.SPEED = 200
-				dialog_over = true
+				
 
 func load_dialogue(file_path) -> Dictionary:
 
