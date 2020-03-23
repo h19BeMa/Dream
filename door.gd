@@ -19,7 +19,6 @@ func _ready():
 	
 func _input(_event):
 	if Input.is_action_just_pressed("ui_accept") && dialog_over == true:
-		#öppna nästa scene
 		print("booh")
 
 func interact():
@@ -63,7 +62,7 @@ func interact():
 				#text_label.visible == false
 				movement.SPEED = 0
 				text_label.show()
-				if dia_index != dialogue.size() + 1:
+				if dia_index != dialogue["2"].size() + 1:
 					text_label.text = dialogue["2"][str(dia_index)]["text"]
 					dia_index += 1
 				else:
