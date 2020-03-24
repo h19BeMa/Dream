@@ -43,6 +43,7 @@ func interact():
 					text_label.hide()
 					movement.SPEED = 200
 					dialog_over = true
+					get_item.items["2"]["is_open"] == true
 					
 			#ifall storleken på dialogen är en rad
 			elif dialogue.size() == 1: 
@@ -54,6 +55,7 @@ func interact():
 				text_label.hide()
 				movement.SPEED = 200
 				dialog_over = true
+				get_item.items["2"]["is_open"] == true
 	
 	#ifall du inte har nyckel			
 	elif get_item.items["1"]["is_picked"] == false:
@@ -69,7 +71,7 @@ func interact():
 					dia_index = 1
 					text_label.hide()
 					movement.SPEED = 200
-					
+					get_item.items["2"]["is_open"] == true
 					
 			#ifall storleken på dialogen är en rad
 			elif dialogue.size() == 1: 
@@ -81,6 +83,7 @@ func interact():
 			else:
 				text_label.hide()
 				movement.SPEED = 200
+				get_item.items["2"]["is_open"] == true
 				
 
 func load_dialogue(file_path) -> Dictionary:

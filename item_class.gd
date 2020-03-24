@@ -13,6 +13,6 @@ func _init():
 func all_items():
 	
 	items = {"1" : {"name": "yellow_key", "is_picked": false},
-			 "2" : {"name": "red_key", "is_picked": false}}
+			 "2" : {"name": "cottage_door", "is_open": false}}
 	
 	pass

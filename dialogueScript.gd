@@ -19,13 +19,10 @@ func _ready():
 	text_label.hide()
 	dialogue = load_dialogue(dpath)
 	
-func _process(delta):
-	if get_item.items["1"]["is_picked"] == true && movement.entered_key == true:
-		sprite.hide()
-
 func _input(event):
-	if Input.is_action_just_pressed("ui_accept") && dialog_over == true:
+	if Input.is_action_just_pressed("ui_accept") && dialog_over == true && movement.entered_key == true:
 		get_item.items["1"]["is_picked"] = true
+		sprite.hide()
 
 func interact() -> void:
 	
