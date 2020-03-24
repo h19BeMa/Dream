@@ -6,8 +6,9 @@ const GRAVITY = 5
 const JUMP = -250
 const FLOOR = Vector2(0, -1)
 
+var hp = 200
 var cooldown = false
-var DASH = 2000
+var DASH = 10000
 var SPEED = 200
 var on_ground = false
 var dashed = true
@@ -21,20 +22,23 @@ func _ready():
 
 
 func _process(delta):
-
+	
+	if Input.is_action_pressed("slash"):
+		pass
+	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
-		if on_ground == true:
-			if Input.is_action_just_pressed("ctrl"):
+		if cooldown == true:
+			if Input.is_action_just_pressed("dash"):
 				velocity.x = SPEED + DASH 
-				dashed = true
+				cooldown = false
 
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
-		if on_ground == true:
-			if Input.is_action_just_pressed("ctrl"):
+		if cooldown == true:
+			if Input.is_action_pressed("dash"):
 				velocity.x = -SPEED + -DASH
-				dashed = true 
+				cooldown = false
 
 	else:
 		velocity.x = 0 
@@ -73,9 +77,7 @@ func _on_door_body_exited(body):
 	entered_door = false
 
 func _on_Timer_timeout():
-	cooldown == true
-	if dashed == true:
-		#reset
-		pass
+	cooldown = true
+	
 
 
