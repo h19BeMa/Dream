@@ -18,12 +18,11 @@ func _ready():
 	dialogue = load_dialogue(dpath)
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_accept") && dialog_over == true && movement.entered_key == true:
-		get_item.items["1"]["is_picked"] = true
+	if Input.is_action_just_pressed("ui_accept") && dialog_over == true && movement.entered_sword == true:
+		get_item.items["3"]["is_picked"] = true
 		sprite.hide()
 
 func interact() -> void:
-	
 	if dialog_over == false:
 		if dialogue.size() > 1:
 			text_label.visible == false

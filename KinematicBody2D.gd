@@ -15,6 +15,7 @@ var dashed = true
 var velocity = Vector2()
 var entered_key = false
 var entered_door = false
+var entered_sword = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,23 +23,31 @@ func _ready():
 
 
 func _process(delta):
-	
-	if Input.is_action_pressed("slash"):
-		pass
+	if get_item.items["3"]["is_picked"] == true:
+		if Input.is_action_just_pressed("block"):
+			#block
+			pass
+
+	if get_item.items["3"]["is_picked"] == true:
+		if Input.is_action_pressed("slash"):
+			#vanlig attack
+			pass
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
-		if cooldown == true:
-			if Input.is_action_just_pressed("dash"):
-				velocity.x = SPEED + DASH 
-				cooldown = false
+		if get_item.items["3"]["is_picked"] == true:	
+			if cooldown == true:
+				if Input.is_action_just_pressed("dash"):
+					velocity.x = SPEED + DASH 
+					cooldown = false
 
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
-		if cooldown == true:
-			if Input.is_action_pressed("dash"):
-				velocity.x = -SPEED + -DASH
-				cooldown = false
+		if get_item.items["3"]["is_picked"] == true:
+			if cooldown == true:
+				if Input.is_action_pressed("dash"):
+					velocity.x = -SPEED + -DASH
+					cooldown = false
 
 	else:
 		velocity.x = 0 
@@ -76,8 +85,18 @@ func _on_door_body_entered(body):
 func _on_door_body_exited(body):
 	entered_door = false
 
+
+func _on_sword_body_entered(body):
+	entered_sword = true
+
+func _on_sword_body_exited(body):
+	entered_sword = false
+
+
 func _on_Timer_timeout():
 	cooldown = true
 	
+
+
 
 
