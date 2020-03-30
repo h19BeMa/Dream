@@ -8,7 +8,7 @@ const FLOOR = Vector2(0, -1)
 
 var hp = 200
 var cooldown = false
-var DASH = 10000
+var DASH = 1000
 var SPEED = 200
 var on_ground = false
 var dashed = true
@@ -70,6 +70,9 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("ui_accept") && entered_door == true:
 		get_node("../items/door").interact()
+		
+	if Input.is_action_just_pressed("ui_accept") && entered_sword == true:
+		get_node("../items/sword").interact()
 
 
 func _on_Area2D_body_entered(body):

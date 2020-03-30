@@ -9,13 +9,14 @@ var dia_index = 1
 
 
 export (String, FILE, "*.json") var dialogue_file_path : String
-var dpath = "data/dialogue.json"
+var dpath = "data/dialogue_sword.json" #str(get_item.items["3"]["item_path"])
 var dialogue : Dictionary
 
 func _ready():
 	sprite.show()
 	text_label.hide()
 	dialogue = load_dialogue(dpath)
+	print(get_item.items["3"]["item_path"])
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept") && dialog_over == true && movement.entered_sword == true:
@@ -48,7 +49,7 @@ func interact() -> void:
 			text_label.hide()
 			movement.SPEED = 200
 			dialog_over = true
-
+			
 
 
 func load_dialogue(file_path) -> Dictionary:

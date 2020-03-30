@@ -9,7 +9,7 @@ var dialog_over = false
 var dia_index = 1
 
 export (String, FILE, "*.json") var dialogue_file_path : String
-var dpath = "data/dialogue_door.json"
+var dpath = "data/dialogue_door.json" #str(get_item.items["2"]["item_path"])
 var dialogue : Dictionary
 
 func _ready():

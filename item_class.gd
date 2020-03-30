@@ -12,8 +12,7 @@ func _init():
 
 func all_items():
 	
-	items = {"1" : {"name": "yellow_key", "is_picked": false},
-			 "2" : {"name": "cottage_door", "is_open": false},
-			 "3" : {"name": "sword", "is_picked": false}}
+	items = {"1" : {"name": "yellow_key", "is_picked": false, "item_path": "data/dialogue.json"},
+			 "2" : {"name": "cottage_door", "is_open": false, "item_path": "data/dialogue_door.json"},
+			 "3" : {"name": "sword", "is_picked": false, "item_path": "data/dialogue_sword.json"}}
 	
-	pass
