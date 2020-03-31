@@ -19,7 +19,7 @@
 [ext_resource path="res://sprites/caracter_walking_with_sword-2 (3).png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25.3419, 63.8574 )
+extents = Vector2( 53.4314, 120.829 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -54,14 +54,22 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="AnimatedSprite" parent="CollisionShape2D"]
+position = Vector2( -9.28792, -3.31711 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="dash_cooldown" type="Timer" parent="CollisionShape2D"]
 wait_time = 2.0
 autostart = true
+
+[node name="dash_duration" type="Timer" parent="CollisionShape2D"]
+wait_time = 2.0
+autostart = true
 [connection signal="timeout" from="CollisionShape2D/dash_cooldown" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="CollisionShape2D/dash_duration" to="." method="_on_dash_duration_timeout"]

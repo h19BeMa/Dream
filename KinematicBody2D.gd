@@ -44,7 +44,12 @@ func _process(delta):
 				cooldown = false
 
 	if Input.is_action_pressed("ui_right"):
-		velocity.x = SPEED * DASH
+		if Dduration == true:
+			DASH = 1
+			velocity.x = SPEED * DASH
+		else:
+			velocity.x = SPEED * DASH
+			
 		if get_item.items["3"]["is_picked"] == true:
 			$CollisionShape2D/Sprite.flip_h = false
 			$CollisionShape2D/Sprite.play("walking_with_sword_R")
@@ -54,7 +59,11 @@ func _process(delta):
 		
 
 	elif Input.is_action_pressed("ui_left"):
-		velocity.x = -SPEED * DASH
+		if Dduration == true:
+			DASH = 1
+			velocity.x = -SPEED * DASH
+		else:
+			velocity.x = -SPEED * DASH
 		if get_item.items["3"]["is_picked"] == true:
 			$CollisionShape2D/Sprite.flip_h = false
 			$CollisionShape2D/Sprite.play("walking_with_sword_L")
@@ -107,6 +116,8 @@ func _on_sword_body_exited(body):
 	entered_sword = false
 
 func _on_Timer_timeout():
+	print("y")
 	cooldown = true
-
-
+func _on_dash_duration_timeout():
+	print("x")
+	Dduration = false
