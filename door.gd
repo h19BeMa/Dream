@@ -20,6 +20,7 @@ func _ready():
 func _input(_event):
 	if Input.is_action_just_pressed("ui_accept") && dialog_over == true:
 		print("booh")
+		get_tree().change_scene("res://outside.tscn")
 
 func interact():
 	#logiken är wack stämmer inte
